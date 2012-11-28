@@ -3,7 +3,6 @@ PostgreSQL Unaccent Extension
 
 Installation:
 
-    % (install libunac - https://gna.org/projects/unac/)
     % make
     % sudo make install
 
