@@ -1,22 +1,19 @@
--- Adjust this setting to control where the objects get created.
-SET search_path = public;
-
 -- Standalone 'musicbrainz_unaccent' function
 
 CREATE OR REPLACE FUNCTION musicbrainz_unaccent (text) RETURNS text
-    AS 'MODULE_PATHNAME'
+    AS 'musicbrainz_unaccent'
     LANGUAGE C IMMUTABLE STRICT;
 
 -- New 'musicbrainz_unaccentdict' dictionary for text search indexer
 
 CREATE OR REPLACE FUNCTION musicbrainz_dunaccentdict_init(internal)
     RETURNS internal
-    AS 'MODULE_PATHNAME'
+    AS 'musicbrainz_unaccent'
     LANGUAGE C STRICT;
 
 CREATE OR REPLACE FUNCTION musicbrainz_dunaccentdict_lexize(internal, internal, internal, internal)
     RETURNS internal
-    AS 'MODULE_PATHNAME'
+    AS 'musicbrainz_unaccent'
     LANGUAGE C STRICT;
 
 CREATE TEXT SEARCH TEMPLATE musicbrainz_unaccentdict_template (
