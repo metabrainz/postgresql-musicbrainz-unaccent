@@ -6,12 +6,12 @@ Installation:
     % make
     % sudo make install
 
-See http://www.postgresql.org/docs/8.3/interactive/contrib.html for
+See http://www.postgresql.org/docs/current/interactive/contrib.html for
 information how to install it into your database.
 
 Usage:
 
-This module provides a simple function to unaccent given string, and a
+This module provides a simple function to unaccent given string, and an
 'unaccentdict' dictionary for PostgreSQL's text search. See the manual
 on how to use text search dictionaries.
 
