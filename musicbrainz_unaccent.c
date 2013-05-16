@@ -187,7 +187,7 @@ utf8_unac(const char *input, int len, char *output)
         unac_lookup(c, &conv_data, &conv_len);
 
         if (conv_len > 0) {
-            /* found an version of the character without accents */
+            /* found a version of the character without accents */
             while (conv_len--) {
                 output += utf8_encode_char(output, *conv_data++);
             }
