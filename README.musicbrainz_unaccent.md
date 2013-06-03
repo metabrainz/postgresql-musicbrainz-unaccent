@@ -11,8 +11,8 @@ used in indexes.
     ----------
      lsctzyai
 
-You can use the 'unaccentdict' dictionary for PostgreSQL's text search. See
-[PostgreSQL
+You can use the `musicbrainz_unaccentdict` dictionary for PostgreSQL's text
+search. See [PostgreSQL
 manual](http://www.postgresql.org/docs/current/static/textsearch-dictionaries.html#TEXTSEARCH-SIMPLE-DICTIONARY)
 on how to use text search dictionaries.
 
