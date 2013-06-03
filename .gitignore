@@ -1,3 +1,6 @@
 musicbrainz_unaccent.o
 musicbrainz_unaccent.so
-sql/musicbrainz_unaccent--1.0.0.sql
+sql/musicbrainz_unaccent--?.?.?.sql
+regression.diffs
+regression.out
+results

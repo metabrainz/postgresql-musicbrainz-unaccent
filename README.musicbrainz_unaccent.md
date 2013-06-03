@@ -1,29 +1,47 @@
 PostgreSQL Unaccent Extension
 =============================
 
-Installation:
-
-    % make
-    % sudo make install
-
-See http://www.postgresql.org/docs/current/interactive/contrib.html for
-information how to install it into your database.
-
-Usage:
-
-This module provides a simple function to unaccent given string, and an
-'unaccentdict' dictionary for PostgreSQL's text search. See the manual
-on how to use text search dictionaries.
+This module provides a simple function and text search dictionary to unaccent
+(remove Unicode accents) from strings. Unlike the included `unaccent` contrib
+extension in PostgreSQL, this function is declared IMMUTABLE and can be safely
+used in indexes.
 
     my_db=> select musicbrainz_unaccent('ľščťžýáí');
      musicbrainz_unaccent
     ----------
      lsctzyai
-    (1 row)
+
+You can use the `musicbrainz_unaccentdict` dictionary for PostgreSQL's text
+search. See [PostgreSQL
+manual](http://www.postgresql.org/docs/current/static/textsearch-dictionaries.html#TEXTSEARCH-SIMPLE-DICTIONARY)
+on how to use text search dictionaries.
+
+Warning: Unaccent always assumes that input is UTF-8 encoded. This function is
+not very useful in databases with other encodings.
+
+
+Installation
+------------
+
+To build and install this extension, simply run:
+
+    % make
+    % sudo make install
+
+Then, to activate this extension in your database, run the SQL:
+
+    CREATE EXTENSION musicbrainz_unaccent;
+
+Databases using the old extension system can be upgraded with:
+
+    CREATE EXTENSION musicbrainz_unaccent FROM unpackaged;
+
+If you run into problems with building, see [PostgreSQL wiki for
+troubleshooting](https://wiki.postgresql.org/wiki/Extension_build_troubleshooting)
 
 
 License
-=======
+-------
 
 Copyright 2009  Lukáš Lalinský
 
