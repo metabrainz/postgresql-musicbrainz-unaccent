@@ -1,0 +1,43 @@
+CREATE EXTENSION musicbrainz_unaccent;
+SELECT musicbrainz_unaccent('ľščťžýáí');
+ musicbrainz_unaccent 
+----------------------
+ lsctzyai
+(1 row)
+
+SELECT musicbrainz_unaccent('foo—bar‒baz');
+ musicbrainz_unaccent 
+----------------------
+ foo-bar-baz
+(1 row)
+
+SELECT musicbrainz_unaccent('nonunicode');
+ musicbrainz_unaccent 
+----------------------
+ nonunicode
+(1 row)
+
+SELECT musicbrainz_unaccent('');
+ musicbrainz_unaccent 
+----------------------
+ 
+(1 row)
+
+SELECT musicbrainz_unaccent(null);
+ musicbrainz_unaccent 
+----------------------
+ 
+(1 row)
+
+SELECT musicbrainz_unaccent(repeat('ä', 65536)) = repeat('a', 65536);
+ ?column? 
+----------
+ t
+(1 row)
+
+SELECT ts_lexize('musicbrainz_unaccentdict', 'ľščťžýáí foo—bar‒baz nonunicode');
+              ts_lexize              
+-------------------------------------
+ {"lsctzyai foo-bar-baz nonunicode"}
+(1 row)
+

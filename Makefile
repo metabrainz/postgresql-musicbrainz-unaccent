@@ -4,6 +4,9 @@ EXTVERSION   = $(shell grep default_version $(EXTENSION).control | \
 
 DATA         = $(filter-out $(wildcard sql/*--*.sql),$(wildcard sql/*.sql))
 DOCS         = README.musicbrainz_unaccent.md
+TESTS        = $(wildcard test/sql/*.sql)
+REGRESS      = $(patsubst test/sql/%.sql,%,$(TESTS))
+REGRESS_OPTS = --inputdir=test
 MODULE_big   = musicbrainz_unaccent
 OBJS         = musicbrainz_unaccent.o
 PG_CONFIG    = pg_config
