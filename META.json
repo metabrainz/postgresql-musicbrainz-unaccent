@@ -1,0 +1,40 @@
+{
+    "name": "musicbrainz_unaccent",
+    "abstract": "Removes accents from Unicode data",
+    "description": "Function and text search dictionary to unaccent Unicode strings. Safe for use in indexes.",
+    "version": "1.0.0",
+    "release_status": "stable",
+
+    "maintainer": "Oliver Charles <ollie@ocharles.org.uk>",
+    "generated_by": "Marti Raudsepp <marti@juffo.org>",
+    "provides": {
+        "musicbrainz_unaccent": {
+            "abstract": "Removes accents from Unicode data",
+            "file": "sql/musicbrainz_unaccent.sql",
+            "docfile": "README.musicbrainz_unaccent.md",
+            "version": "1.0.0"
+        }
+    },
+    "license": {
+        "gpl_2": "http://www.gnu.org/licenses/gpl-2.0.html"
+    },
+    "tags": [
+        "musicbrainz", "unicode", "accents", "unaccent", "languages",
+        "canonicalize"
+    ],
+    "resources": {
+        "bugtracker": {
+            "web": "http://tickets.musicbrainz.org/browse/MBS"
+        },
+        "repository": {
+            "url": "git://github.com/metabrainz/postgresql-musicbrainz-unaccent.git",
+            "web": "https://github.com/metabrainz/postgresql-musicbrainz-unaccent",
+            "type": "git"
+        }
+    },
+
+    "meta-spec": {
+        "version": "1.0.0",
+        "url": "http://pgxn.org/meta/spec.txt"
+    }
+}
