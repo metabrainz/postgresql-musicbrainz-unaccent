@@ -306,7 +306,24 @@ musicbrainz_dunaccentdict_lexize(PG_FUNCTION_ARGS)
 
     input = (char *) PG_GETARG_POINTER(1);
     input_len = PG_GETARG_INT32(2);
+
+    /* LC_CTYPE affects the behavior of `lowerstr_with_len`, which otherwise
+       defers to the Ctype permanently set on the database when it was
+       created. "en_US.UTF-8" was historically the Ctype used on the
+       MusicBrainz production database, but that was later switched to "C",
+       causing `lowerstr_with_len` to not handle wide characters.
+
+       The locale is only changed temporarily, as shown in the example here:
+       https://www.gnu.org/software/libc/manual/html_node/Setting-the-Locale.html
+     */
+    char *old_locale = strdup(setlocale(LC_CTYPE, NULL));
+    if (!old_locale) {
+        PG_RETURN_POINTER(NULL);
+    }
+    setlocale(LC_CTYPE, "en_US.UTF-8");
     input = lowerstr_with_len(input, input_len);
+    setlocale(LC_CTYPE, old_locale);
+    free(old_locale);
 
     output = unaccent_string(input);
 
